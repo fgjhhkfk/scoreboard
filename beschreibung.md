@@ -9,9 +9,18 @@ Spieler Hinzufuegen
 Link zu einer Statistikseite
 
 Datenbank:
-Eine Tabelle mit den Ergebnissen (s.o.)
-    CREATE TABLE scores(id integer primary key, player1 text, player2 text, goals1 integer, goals2 integer, date blob);
-Eine Tabelle mit Spielern
+Eine Tabelle mit Spielern zuerst erstellen
     Username text, Spielfarbe text
     Bild?
-    CREATE TABLE users(id integer primary key, username text, color text);
+    CREATE TABLE users(userid INTEGER PRIMARY KEY,
+                       username TEXT,
+                       color TEXT);
+Eine Tabelle mit den Ergebnissen (s.o.)
+    CREATE TABLE scores(gameid INTEGER PRIMARY KEY,
+                        player1 TEXT,
+                        player2 TEXT,
+                        goals1 INTEGER,
+                        goals2 INTEGER,
+                        date BLOB,
+                        FOREIGN KEY (player1) REFERENCES users(userid),
+                        FOREIGN KEY (player2) REFERENCES users(userid));

@@ -1,10 +1,13 @@
 # import os
 # from flask import Flask, render_template, request, url_for, redirect, flash
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect
 from flask_sqlalchemy import SQLAlchemy
+from forms import AddPlayerForm
+
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///scoreboard.sqlite'
+app.config['SECRET_KEY'] = '1234567890'
 
 db = SQLAlchemy(app)
 
@@ -24,13 +27,26 @@ class results(db.Model):
     player2 = db.Column(db.String)
     goals1 = db.Column(db.String)
     goals2 = db.Column(db.String)
-    date = db.Column(BLOB)
-
+    date = db.Column(db.BLOB)
 
 
 @app.route('/')
 def home():
     return render_template('home.html')
+
+
+@app.route('/add_player', methods=['GET', 'POST'])
+def add_player():
+    form = AddPlayerForm()
+    if form.validate_on_submit():
+        user = users(username=form.Name.data,
+                     color=form.Color.data)
+
+        db.session.add(user)
+        db.session.commit()
+        return redirect('/')
+
+    return render_template('add_player.html', form=form)
 
 
 if __name__ == '__main__':

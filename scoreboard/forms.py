@@ -29,3 +29,5 @@ class ChoosePlayerForm(FlaskForm):
     Player = QuerySelectField(query_factory=users_query, allow_blank=False)
     submit = SubmitField('Spiel speichern!')
 
+class SaveGame(FlaskForm):
+    submit = SubmitField('Spiel speichern!')

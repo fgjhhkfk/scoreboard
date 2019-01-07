@@ -1,12 +1,12 @@
-Anzeigetafel fuer einen Spielstand
-Farbe der Tafel individuell einstellbar
-Knopf zum hoch und herunterzaehlen
-Knopf zum schreiben des Ergebnisses in eine Datenbank
+x Anzeigetafel fuer einen Spielstand
+/ Farbe der Tafel individuell einstellbar
+x Knopf zum hoch und herunterzaehlen
+/ Knopf zum schreiben des Ergebnisses in eine Datenbank
     - Tore spieler 1
     - Tore Spieler 2
     - Datum + Uhrzeit
-Spieler Hinzufuegen
-Link zu einer Statistikseite
+o Spieler Hinzufuegen
+o Link zu einer Statistikseite
 
 Datenbank:
 Eine Tabelle mit Spielern zuerst erstellen

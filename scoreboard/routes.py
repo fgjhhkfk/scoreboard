@@ -8,16 +8,24 @@ from scoreboard import db
 @app.route('/', methods=['GET', 'POST'])
 def home():
     form2 = ChoosePlayerForm(request.form)
-    # print("player1: " + request.form['score1'])
-    # print("player2: " + request.form['score2'])
     if request.method == "POST" and form2.validate():
         print("der geht")
-        score = results(player1='hjk',
-                        player2='gatz',
+        id1=request.form['Player1']
+        id2=request.form['Player2']
+        score = results(player1=str(users.query.get(id1)),
+                        player2=str(users.query.get(id2)),
                         goals1=request.form['score1'],
                         goals2=request.form['score2'],
                         date='01.01.2001')
-
+        # score = results(player1=users.query.get(request.form['Player1']),
+        #                 player2=users.query.get(request.form['Player2']),
+        #                 goals1=request.form['score1'],
+        #                 goals2=request.form['score2'],
+        #                 date='01.01.2001')
+        print(users.query.filter(id1).first())
+        # users.query.get(request.form['Player2'])
+        # print(score.player1)
+        # print(score.player2)
         if not score.goals1 and not score.goals2:
             score.goals1 = 0
             score.goals2 = 0
@@ -26,12 +34,11 @@ def home():
         elif not score.goals2:
             score.goals2 = 0
 
-
         db.session.add(score)
         db.session.commit()
         return redirect(url_for('home'))
     else:
-        print("Irgendein Quatsch geschieht (oben)")
+        print("Irgendein Quatsch geschieht")
 
     return render_template('home.html', form2=form2)
 

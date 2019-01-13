@@ -3,6 +3,7 @@ from scoreboard import app
 from scoreboard.forms import AddPlayerForm, ChoosePlayerForm, SaveGame
 from scoreboard.models import users, results
 from scoreboard import db
+import datetime
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -10,13 +11,14 @@ def home():
     form2 = ChoosePlayerForm(request.form)
     if request.method == "POST" and form2.validate():
         print("der geht")
-        id1=request.form['Player1']
-        id2=request.form['Player2']
+        id1 = request.form['Player1']
+        id2 = request.form['Player2']
+        now = datetime.datetime.now()
         score = results(player1=str(users.query.get(id1)),
                         player2=str(users.query.get(id2)),
                         goals1=request.form['score1'],
                         goals2=request.form['score2'],
-                        date='01.01.2001')
+                        date=now.strftime("%d.%m.%Y %H:%M:%S"))
         # score = results(player1=users.query.get(request.form['Player1']),
         #                 player2=users.query.get(request.form['Player2']),
         #                 goals1=request.form['score1'],

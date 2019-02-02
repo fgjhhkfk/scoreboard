@@ -32,4 +32,4 @@ class ChoosePlayerForm(FlaskForm):
 
 
 class SaveGame(FlaskForm):
-    submit = SubmitField('Spiel speichern!')
+    submit = SubmitField('save game')

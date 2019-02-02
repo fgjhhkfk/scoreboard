@@ -8,8 +8,8 @@ import datetime
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    form2 = ChoosePlayerForm(request.form)
-    if request.method == "POST" and form2.validate():
+    form = ChoosePlayerForm(request.form)
+    if request.method == "POST" and form.validate():
         print("der geht")
         id1 = request.form['Player1']
         id2 = request.form['Player2']
@@ -34,7 +34,7 @@ def home():
     else:
         print("Irgendein Quatsch geschieht")
 
-    return render_template('home.html', form2=form2)
+    return render_template('home.html', form=form)
 
 
 @app.route('/test')

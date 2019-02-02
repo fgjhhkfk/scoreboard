@@ -32,6 +32,23 @@ html, body{
     line-height: 40px;
 }
 
+
+.header ul {
+    display: inline;
+}
+
+.header li {
+    display: inline;
+    padding: 0;
+    grid-gap: 20px;
+    list-style: none;
+    list-style-type: none;
+}
+.header a {
+    text-decoration: none;
+    color: #f0f0f0;
+}
+
 .side1{
     grid-area: side1;
     display: grid;

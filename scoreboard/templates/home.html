@@ -11,7 +11,17 @@
 <form method="POST" action="" enctype="multipart/form-data">
     <div class="wrapper">
         <div class="header">
-            add player | save game | show stats | show results | standings
+            <ul>
+                <li><a href="{{ url_for('add_player') }}" title="add player">add player</a></li>
+                |
+                <li><a href="" title="save game">save game</a></li>
+                |
+                <li><a href="" title="show stats">show stats</a></li>
+                |
+                <li><a href="" title="show results">show results</a></li>
+                |
+                <li><a href="" title="standings">standings</a></li>
+            </ul>
         </div>
         <form  action="{{ url_for('home') }}" method="POST">
             <div class="side1">

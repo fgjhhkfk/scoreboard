@@ -19,15 +19,7 @@ def home():
                         goals1=request.form['score1'],
                         goals2=request.form['score2'],
                         date=now.strftime("%d.%m.%Y %H:%M:%S"))
-        # score = results(player1=users.query.get(request.form['Player1']),
-        #                 player2=users.query.get(request.form['Player2']),
-        #                 goals1=request.form['score1'],
-        #                 goals2=request.form['score2'],
-        #                 date='01.01.2001')
         print(users.query.filter(id1).first())
-        # users.query.get(request.form['Player2'])
-        # print(score.player1)
-        # print(score.player2)
         if not score.goals1 and not score.goals2:
             score.goals1 = 0
             score.goals2 = 0
